@@ -1,14 +1,9 @@
-.App {
-  text-align: center;
-  height: 100vh;
-}
-html,body {
-  height: 100vh;
-  width: 100%;
-  background-color: rgb(31 41 55 );
-
+body{
+    background-color: rgb(245, 223, 250);
+    position: relative;
+    min-height: 100vh;
 }
 
-
-
-
+.pageContent{
+    padding-bottom: 3%
+}

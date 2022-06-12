@@ -1,0 +1,25 @@
+.card-img-top{
+    width: 50%;
+    height: auto;
+    align-self: center;
+    border-radius: 50%;
+}
+
+.Content{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.bio{
+    height:70px;
+}
+
+.starIconSpan{
+    text-align:right;
+    padding-top: 5%;
+    padding-right: 5%;
+}
+
+.starIcon:hover{
+    cursor: pointer;
+}

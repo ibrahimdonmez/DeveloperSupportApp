@@ -1,20 +1,21 @@
-import './App.css';
-import { AddGithub, AddLinkedin, Linkedin } from './pages';
-import { Navbar } from './components';
+import { Home, AddGithubLinkedin, AddLinkedin, Navbar, Register, Login, Footer } from './components';
 import { Routes, Route } from "react-router-dom";
-
+import "./App.css";
 
 function App() {
   return (
-    <div className="App container mx-auto ">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Linkedin />} />
-        <Route path="add-github" element={<AddGithub />} />
-        <Route path="add-linkedin" element={<AddLinkedin />} />
-      </Routes>
-
-
+    <div>
+      <div className='pageContent'>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="add-github-linkedin" element={<AddGithubLinkedin />} />
+          <Route path="add-linkedin" element={<AddLinkedin />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+        </Routes>
+      </div>
+      <Footer />
     </div>
   );
 }

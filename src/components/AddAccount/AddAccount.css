@@ -1,0 +1,16 @@
+.AccountContainer{
+    padding-top:3%;
+    text-align:-webkit-center;
+}
+
+.addAccountLink{
+    text-decoration: none;
+}
+
+.addAccountLink:hover{
+    color:rgb(129, 188, 129);
+}
+
+.infoText{
+    margin-top: 2%;
+}
