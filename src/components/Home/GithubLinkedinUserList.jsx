@@ -90,9 +90,9 @@ export const GithubLinkedinUserList = ({ data: { github, linkedin, starCount, us
   }
 
   return (
-    <div className="col-xlg-2 col-lg-4 col-md-6 col-sm-12"> 
+    <div className="col-xlg-2 col-lg-3 col-md-6 col-sm-12"> 
       <ToastContainer position="top-right" autoClose={3000}/>
-      <div className="card" style={{"width": "18rem"}}>
+      <div className="card">
         {User.userName !== null && userName !== User.userName && starEnabled === true ? 
           <span className="starIconSpan" onClick={giveStar}>
             <AiFillStar className="starIcon" color="#26c933" fontSize="2em" /> <b>{starCount}</b>
@@ -111,7 +111,7 @@ export const GithubLinkedinUserList = ({ data: { github, linkedin, starCount, us
           <li className="list-group-item"><b>Takipçi:</b> {followers} Kişi</li>
           <li className="list-group-item"><b>Takip Edilen:</b> {following} Kişi</li>
           <li className="list-group-item"><b>Lokasyon: {location}</b></li>
-          <li className="list-group-item"><b>Çalıştığı Şirket: {company}</b></li>
+          <li className="list-group-item card-company"><b>Çalıştığı Şirket: {company}</b></li>
         </ul>
         <div className="card-body text-center">
           <a href={`https://github.com/${github}`} className="card-link btn btn-primary" target="_blank" rel="noopener noreferrer">Github</a>

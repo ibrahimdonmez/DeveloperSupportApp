@@ -2,7 +2,7 @@ import React from 'react'
 
 export const LinkedinUserList = ({data:{userName,description,fullName}}) => {
     return (
-        <div className="col-md-3">
+        <div className="col-xlg-2 col-lg-3 col-md-4 col-sm-6">
             <div className="card text-center">
                 <div className="card-body">
                     <h5 className="card-title">{fullName}</h5>

@@ -3,6 +3,7 @@
     height: auto;
     align-self: center;
     border-radius: 50%;
+    transition: transform .2s;
 }
 
 .Content{
@@ -14,12 +15,30 @@
     height:70px;
 }
 
+.card-company{
+    height:57px;
+}
+
 .starIconSpan{
     text-align:right;
     padding-top: 5%;
     padding-right: 5%;
+    transition: transform .2s;
 }
 
 .starIcon:hover{
     cursor: pointer;
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
+}
+
+.card-img-top:hover {
+    -ms-transform: scale(1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.2); 
+}
+
+.card{
+    margin-top: 2%;
 }
