@@ -5,12 +5,15 @@ import { db } from "../../backend/firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
+import { user } from "../../stores/UserSlice";
+import { useDispatch } from 'react-redux';
 
 export const GithubLinkedinUserList = ({ data: { github, linkedin, starCount, userName, starEnabled } }) => {
   const [gitData, setGitData] = useState([]);
   const [userInfo, setUserInfo] = useState({});
   const [githubLinkedinInfo, setGithubLinkedinInfo] = useState({});
 
+  const dispatch = useDispatch();
   const User = useSelector(state => state.user);
 
   useEffect(() => {
@@ -59,7 +62,7 @@ export const GithubLinkedinUserList = ({ data: { github, linkedin, starCount, us
     if(userInfo.data().starRemaining - 1 !== -1) {
       updateDoc(doc(db,"Users", userInfo.id), {
         starRemaining: userInfo.data().starRemaining - 1
-      });   
+      });  
 
       const q2 = query(collection(db, 'githubLinkedinUsers'),where("github", "==", github), where("linkedin", "==", linkedin));
       onSnapshot(q2, (querySnapshot) => {
@@ -70,6 +73,9 @@ export const GithubLinkedinUserList = ({ data: { github, linkedin, starCount, us
       updateDoc(doc(db,"githubLinkedinUsers", githubLinkedinInfo.id), {
         starCount: starCount
       });
+
+      localStorage.setItem('starRemaining', localStorage.getItem("starRemaining") - 1 < 0 ? 0 : localStorage.getItem("starRemaining") - 1);
+      dispatch(user());
     }
     else{
       toast.error("Puan Verme Limitinizi Aştınız!");

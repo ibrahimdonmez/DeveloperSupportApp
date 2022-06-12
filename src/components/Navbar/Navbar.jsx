@@ -54,7 +54,9 @@ export const Navbar = () => {
                     }
                     {User.userName !== null &&
                     <ul className="navbar-nav" style={{marginLeft:"auto"}}>
+                       
                         <li className="nav-item">
+                            <span>Hoşgeldin <b>{User.userName}</b>, <b>{User.starRemaining}</b> Puan verme hakkın kaldı &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             <button className="btn" onClick={() => {localStorage.clear(); dispatch(user())}}>
                                 Çıkış Yap
                             </button>
