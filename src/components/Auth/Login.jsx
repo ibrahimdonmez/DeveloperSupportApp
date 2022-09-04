@@ -7,8 +7,10 @@ import { db } from "../../backend/firebase";
 import { user } from "../../stores/UserSlice";
 import { useDispatch } from 'react-redux';
 import "./Auth.css";
+import { useTranslation } from 'react-i18next';
 
 export const Login = () => {
+  const { t } = useTranslation();
 
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
@@ -55,7 +57,7 @@ export const Login = () => {
     <div className="container AuthContainer">
       <form onSubmit={handleSubmit} className="">
         <div className="form-group">
-          <label>Mail</label>
+          <label>{t("LoginPageFormInput1Title")}</label>
           <input
             className="form-control w-50"
             type="text"
@@ -71,7 +73,7 @@ export const Login = () => {
         </div>
         <br/>
         <div className="form-group">
-          <label>Şifre</label>
+          <label>{t("LoginPageFormInput2Title")}</label>
           <input
             className="form-control w-50"
             type="password"
@@ -86,14 +88,14 @@ export const Login = () => {
           )}
         </div>
         <br/>
-        {showErrorMessage && <h6 className='text-danger'> Hesap Bulunamadı! </h6>}
-        <button type="submit" className="btn btn-primary"> Giriş Yap </button>
+        {showErrorMessage && <h6 className='text-danger'> {t("LoginPageFormError1")} </h6>}
+        <button type="submit" className="btn btn-primary"> {t("LoginPageFormButtonText")} </button>
       </form> 
       <div className="infoText">
         <div>
-          Eğer Hesabın Yoksa
+          {t("LoginPageFormLowerInfo")}
           <Link to="/Register" className="AuthLink">
-            <span> Kayıt Ol </span>  
+            <span> {t("LoginPageFormLowerInfoLinkText")} </span>  
           </Link>
         </div>
       </div>

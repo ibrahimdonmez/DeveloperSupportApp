@@ -7,8 +7,11 @@ import { validationSchema2 } from "../../helper";
 import "./AddAccount.css";
 import { MdNotificationImportant } from 'react-icons/md';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 export const AddGithubLinkedin = () => {
+  const { t } = useTranslation();
+
   let navigate = useNavigate();
   const User = useSelector(state => state.user);
 
@@ -76,12 +79,12 @@ export const AddGithubLinkedin = () => {
     <div className="container AccountContainer">
       <form onSubmit={handleSubmit} className="">
         <div className="form-group">
-          <label>Linkedin Profil Linki</label>
+          <label>{t("AddGithubLinkedinPageInput1Title")}</label>
           <input
             className="form-control w-50"
             type="text"
             name="linkedin"
-            placeholder="Profil linkin (Örn: www.linkedin.com/in/profile)"
+            placeholder={t("AddGithubLinkedinPageInput1Info")}
             onChange={handleChange}
             value={values.linkedin && values.linkedin}
             values={values.linkedin}
@@ -94,12 +97,12 @@ export const AddGithubLinkedin = () => {
         </div>
         <br/>
         <div className="form-group">
-          <label>Github Profil Linki</label>
+          <label>{t("AddGithubLinkedinPageInput2Title")}</label>
           <input
             className="form-control w-50"
             type="text"
             name="github"
-            placeholder="Profil linkin (Örn: https://github.com/profile)"
+            placeholder={t("AddGithubLinkedinPageInput2Info")}
             onChange={handleChange}
             value={values.github && values.github}
             values={values.github}
@@ -113,26 +116,26 @@ export const AddGithubLinkedin = () => {
         {User.userName === null && 
           <div>
             <h6 className="text-danger"><MdNotificationImportant color="gray"/>
-              Giriş yapmadığınız için başkaları profilinize puan veremeyecek ve sizde başkalarına puan veremeyeceksiniz !
+              {t("AddGithubLinkedinPageFormWarningText")}
               <Link to="/Register" className="AuthLink">
-                <span> Kayıt Ol </span>  
+                <span> {t("AddGithubLinkedinPageFormWarningLinkText")} </span>  
               </Link>
             </h6>               
           </div>
         }
        <br/>
-        {showGithubErrorMessage && <h6 className="text-danger"> Bu Github Hesabı Sistemde Zaten Kayıtlı! </h6>}
-        {showLinkedinErrorMessage && <h6 className="text-danger"> Bu Linkedin Hesabı Sistemde Zaten Kayıtlı! </h6>}
-        <button type="submit" className="btn btn-primary"> Kaydet </button>
+        {showGithubErrorMessage && <h6 className="text-danger"> {t("AddGithubLinkedinPageFormError1")} </h6>}
+        {showLinkedinErrorMessage && <h6 className="text-danger"> {t("AddGithubLinkedinPageFormError2")} </h6>}
+        <button type="submit" className="btn btn-primary"> {t("AddGithubLinkedinPageFormButtonText")} </button>
       </form>
 
       <div className="infoText">
         <div>
-          Github Hesabın Yoksa
+          {t("AddGithubLinkedinPageFormLowerInfo")}
           <Link to="/add-linkedin" className="addAccountLink">
-             <span> Linkedin </span>  
+             <span> {t("AddGithubLinkedinPageFormLowerLinkText")} </span>  
           </Link>
-          Hesabını Kaydet
+          {t("AddGithubLinkedinPageFormLowerInfoMore")}
         </div>
       </div>
     </div>

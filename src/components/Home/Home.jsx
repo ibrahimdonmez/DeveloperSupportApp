@@ -4,8 +4,11 @@ import { collection, query, orderBy, onSnapshot } from "firebase/firestore"
 import { db } from '../../backend/firebase'
 import ReactLoading from 'react-loading';
 import "./Home.css"
+import { useTranslation } from 'react-i18next';
 
 export const Home = () => {
+  const { t } = useTranslation();
+
   const [linkedinUsers, setLinkedinUsers] = useState([]);
   const [githubLinkedinUsers, setGithubLinkedinUsers] = useState([]);
 
@@ -38,7 +41,7 @@ export const Home = () => {
           <>
             <div className="Content">
               <h2 className=''>Github & Linkedin</h2>
-              <span className=''><b className=''>{githubLinkedinUsers.length}</b> kişi</span>
+              <span className=''><b className=''>{githubLinkedinUsers.length}</b> {t("HomePageList1TitleLowerInfo")}</span>
 
               <div className='row'>
                 {
@@ -48,7 +51,7 @@ export const Home = () => {
             </div>
             <div className="Content">
               <h2 className=''>Linkedin</h2> 
-              <span className=''><b className=''>{linkedinUsers.length}</b> kişi</span>
+              <span className=''><b className=''>{linkedinUsers.length}</b> {t("HomePageList1TitleLowerInfo")}</span>
 
               <div className='row'>
                 {

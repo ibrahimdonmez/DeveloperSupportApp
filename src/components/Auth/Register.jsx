@@ -7,8 +7,10 @@ import { db } from "../../backend/firebase";
 import { user } from "../../stores/UserSlice";
 import { useDispatch } from 'react-redux';
 import "./Auth.css";
+import { useTranslation } from 'react-i18next';
 
 export const Register = () => {
+  const { t } = useTranslation();
 
   const [showMailErrorMessage, setShowMailErrorMessage] = useState(false);
   const [showuserNameErrorMessage, setShowUserNameErrorMessage] = useState(false);
@@ -74,7 +76,7 @@ export const Register = () => {
     <div className="container AuthContainer">
       <form onSubmit={handleSubmit} className="">
         <div className="form-group">
-          <label>Kullanıcı Adı</label>
+          <label>{t("RegisterPageFormInput1Title")}</label>
           <input
             className="form-control w-50"
             type="text"
@@ -90,7 +92,7 @@ export const Register = () => {
         </div>
         <br/>
         <div className="form-group">
-          <label>Mail</label>
+          <label>{t("RegisterPageFormInput2Title")}</label>
           <input
             className="form-control w-50"
             type="text"
@@ -106,7 +108,7 @@ export const Register = () => {
         </div>
         <br/>
         <div className="form-group">
-          <label>Şifre</label>
+          <label>{t("RegisterPageFormInput3Title")} </label>
           <input
             className="form-control w-50"
             type="password"
@@ -121,15 +123,15 @@ export const Register = () => {
           )}
         </div>
         <br/>
-        {showMailErrorMessage && <h6 className='text-danger'> Bu Email sistemde zaten kayıtlı! </h6>}
-        {showuserNameErrorMessage && <h6 className='text-danger'> Bu Kullanıcı Adı sistemde zaten kayıtlı! </h6>}
-        <button type="submit" className="btn btn-primary"> Kayıt Ol </button>
+        {showMailErrorMessage && <h6 className='text-danger'> {t("RegisterPageFormError1")}  </h6>}
+        {showuserNameErrorMessage && <h6 className='text-danger'> {t("RegisterPageFormError2")}  </h6>}
+        <button type="submit" className="btn btn-primary"> {t("RegisterPageFormButtonText")} </button>
       </form> 
       <div className="infoText">
         <div>
-          Eğer Hesabın Zaten Varsa
+          {t("RegisterPageFormLowerInfo")}
           <Link to="/Login" className="AuthLink">
-            <span> Giriş Yap </span>  
+            <span> {t("RegisterPageFormLowerInfoLinkText")} </span>  
           </Link>
         </div>
       </div>

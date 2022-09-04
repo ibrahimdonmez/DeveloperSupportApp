@@ -8,7 +8,7 @@ export const LinkedinUserList = ({data:{userName,description,fullName}}) => {
                     <h5 className="card-title">{fullName}</h5>
                     <p className="card-text">{description}</p>
                     <a href={`https://tr.linkedin.com/in/${userName}`} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                        Profili Görüntüle
+                        Linkedin
                     </a>
                 </div>
             </div>

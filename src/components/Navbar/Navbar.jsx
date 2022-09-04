@@ -4,9 +4,11 @@ import "./Navbar.css";
 import { useSelector } from 'react-redux';
 import { user } from "../../stores/UserSlice";
 import { useDispatch } from 'react-redux';
+import { useTranslation } from "react-i18next";
 
 export const Navbar = () => {
-    
+    const { t } = useTranslation();
+
     const User = useSelector(state => state.user);
     const dispatch = useDispatch();
 
@@ -22,14 +24,14 @@ export const Navbar = () => {
                         <li className="nav-item">
                             <Link to='add-github-linkedin' >
                                 <button className="btn">
-                                    Github & Linkedin Ekle
+                                    {t("HeaderAddGithubLinkedinText")}
                                 </button>
                             </Link>        
                         </li>
                         <li className="nav-item">
                             <Link to='add-linkedin'>
                                 <button className="btn">
-                                    Linkedin Ekle
+                                    {t("HeaderAddLinkedinText")}
                                 </button>
                             </Link>        
                         </li>
@@ -39,14 +41,14 @@ export const Navbar = () => {
                             <li className="nav-item">
                                 <Link to='Login'>
                                     <button className="btn">
-                                        Giriş Yap
+                                        {t("HeaderLoginText")}
                                     </button>
                                 </Link>        
                             </li>
                             <li className="nav-item">
                                 <Link to='Register'>
                                     <button className="btn">
-                                        Kayıt Ol
+                                        {t("HeaderRegisterText")}
                                     </button>
                                 </Link>        
                             </li>
@@ -56,9 +58,9 @@ export const Navbar = () => {
                     <ul className="navbar-nav" style={{marginLeft:"auto"}}>
                        
                         <li className="nav-item">
-                            <span>Hoşgeldin <b>{User.userName}</b>, <b>{User.starRemaining}</b> Puan verme hakkın kaldı &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span>{t("HomePageWelcomeText")} <b>{User.userName}</b>, <b>{User.starRemaining}</b> {t("HomePageRemainingPointsText")} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             <button className="btn" onClick={() => {localStorage.clear(); dispatch(user())}}>
-                                Çıkış Yap
+                                {t("HomePageLogoutText")}
                             </button>
                         </li>
                     </ul>

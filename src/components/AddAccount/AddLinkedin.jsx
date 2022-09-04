@@ -4,8 +4,11 @@ import { db } from "../../backend/firebase";
 import { useNavigate, Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { validationSchema } from "../../helper";
+import { useTranslation } from 'react-i18next';
 
 export const AddLinkedin = () => {
+  const { t } = useTranslation();
+
   let navigate = useNavigate();
 
   const [showLinkedinErrorMessage,setShowLinkedinErrorMessage] = useState(false);
@@ -51,12 +54,12 @@ export const AddLinkedin = () => {
     <div className="container AccountContainer">
       <form onSubmit={handleSubmit} className="">
         <div className="">
-          <span className="">Ad Soyad</span>
+          <span className="">{t("AddLinkedinPageInput1Title")}</span>
           <input
             className="form-control w-50"
             type="text"
             name="fullName"
-            placeholder=""
+            placeholder={t("AddLinkedinPageInput1Info")}
             onChange={handleChange}
             values={values.fullName}
             autoComplete="off"
@@ -68,12 +71,12 @@ export const AddLinkedin = () => {
         </div>
         <br/>
         <div className="">
-          <span className="">Profil linkin</span>
+          <span className="">{t("AddLinkedinPageInput2Title")}</span>
           <input
             className="form-control w-50"
             type="text"
             name="userName"
-            placeholder="Profil linkin (Örn: www.linkedin.com/in/profile/)"
+            placeholder={t("AddLinkedinPageInput2Info")}
             onChange={handleChange}
             value={values.userName && values.userName}
             values={values.userName}
@@ -86,12 +89,12 @@ export const AddLinkedin = () => {
         </div>
         <br/>
         <div className="">
-          <span className="">İlgi Alanın</span>
+          <span className="">{t("AddLinkedinPageInput3Title")}</span>
           <input
             className="form-control w-25"
             type="text"
             name="description"
-            placeholder="Örn: Front-End Developer"
+            placeholder={t("AddLinkedinPageInput3Info")}
             onChange={handleChange}
             values={values.description}
             autoComplete="off"
@@ -102,17 +105,17 @@ export const AddLinkedin = () => {
           )}
         </div>
         <br/>
-        {showLinkedinErrorMessage && <h6 className="text-danger"> Bu Linkedin Hesabı Sistemde Zaten Kayıtlı </h6>}
-        <button type="submit" className="btn btn-primary"> Kaydet </button>
+        {showLinkedinErrorMessage && <h6 className="text-danger"> {t("AddLinkedinPageFormError1")} </h6>}
+        <button type="submit" className="btn btn-primary"> {t("AddLinkedinPageFormButtonText")} </button>
       </form>
 
       <div className="infoText">
         <div>
-          Eğer Github Hesabın da Varsa:
+          {t("AddLinkedinPageFormLowerInfo")}
           <Link to="/add-github-linkedin" className="addAccountLink">
-            <span> Github </span>
+            <span> {t("AddLinkedinPageFormLowerLinkText")} </span>
           </Link>
-          Hesabını Kaydet
+          {t("AddLinkedinPageFormLowerInfoMore")}
         </div>
       </div>
     </div>

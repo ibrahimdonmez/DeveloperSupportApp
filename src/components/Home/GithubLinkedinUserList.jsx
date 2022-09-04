@@ -7,8 +7,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import { user } from "../../stores/UserSlice";
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 export const GithubLinkedinUserList = ({ data: { github, linkedin, starCount, userName, starEnabled } }) => {
+  const { t } = useTranslation();
+
   const [gitData, setGitData] = useState([]);
   const [userInfo, setUserInfo] = useState({});
   const [githubLinkedinInfo, setGithubLinkedinInfo] = useState({});
@@ -78,21 +81,21 @@ export const GithubLinkedinUserList = ({ data: { github, linkedin, starCount, us
       dispatch(user());
     }
     else{
-      toast.error("Puan Verme Limitinizi Aştınız!");
+      toast.error(t("HomePageRateErrorLimitExceeeded"));
     }
 
   }
 
   var errorText = "";
-
+  
   if(User.userName === null){
-    errorText = "Puan Vermek İçin Giriş Yapmalısınız!";
+    errorText = t("HomePageRateError1") ;
   }
   else if(userName === User.userName) {
-    errorText = "Kendinize Puan Veremezsiniz!";
+    errorText = t("HomePageRateError2") ;
   }
   else if (starEnabled === false) {
-    errorText = "Bu Hesaba Yıldız Verilmesi Aktifleştirilmemiş!";
+    errorText = t("HomePageRateError3") ;
   }
 
   return (
@@ -114,10 +117,10 @@ export const GithubLinkedinUserList = ({ data: { github, linkedin, starCount, us
           <p className="card-text bio">Bio: {userBio(bio)}</p>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item"><b>Takipçi:</b> {followers} Kişi</li>
-          <li className="list-group-item"><b>Takip Edilen:</b> {following} Kişi</li>
-          <li className="list-group-item"><b>Lokasyon: {location}</b></li>
-          <li className="list-group-item card-company"><b>Çalıştığı Şirket: {company}</b></li>
+          <li className="list-group-item"><b>{t("HomePageList1CardInfo1")}</b> {followers} {t("HomePageList1TitleLowerInfo")}</li>
+          <li className="list-group-item"><b>{t("HomePageList1CardInfo2")}</b> {following} {t("HomePageList1TitleLowerInfo")}</li>
+          <li className="list-group-item"><b>{t("HomePageList1CardInfo3")} {location}</b></li>
+          <li className="list-group-item card-company"><b>{t("HomePageList1CardInfo4")}  {company}</b></li>
         </ul>
         <div className="card-body text-center">
           <a href={`https://github.com/${github}`} className="card-link btn btn-primary" target="_blank" rel="noopener noreferrer">Github</a>
